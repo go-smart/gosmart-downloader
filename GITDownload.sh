@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir ${HOME}/Code/GoSmart
 cd  ${HOME}/Code/GoSmart
 git clone https://github.com/go-smart/goosefoot-elmer-modules.git
