@@ -1,5 +1,10 @@
 #!/bin/bash
-sudo apt-get install cmake gfortran-5 libgfortran-5-dev gfortran-5-multilib mpich libblas-dev liblapack-dev libmumps-dev build-essential python libcgal-dev libcgal-qt5-dev libvtk5-dev libtinyxml2-dev docker docker-compose python-setuptools python3-setuptools python3-pip libprotobuf-dev protobuf-compiler
+sudo apt-get install cmake gfortran-5 libgfortran-5-dev gfortran-5-multilib mpich libblas-dev liblapack-dev libmumps-dev build-essential python libcgal-dev libcgal-qt5-dev libvtk5-dev libtinyxml2-dev docker docker-compose python-setuptools python3-setuptools python3-pip libprotobuf-dev protobuf-compiler python3-paramiko python3-zope.interface python-scipy gmsh ipython curl python-yaml libboost-filesystem1.58-dev
+sudo pip3 install autobahn
+sudo add-apt-repository ppa:fenics-packages/fenics
+sudo apt-get update
+sudo apt-get install --no-install-recommendfs fenics
+sudo apt-get dist-upgrade
 sudo update-alternatives -–install /usr/bin/gfortran gfortran /usr/bin/gfortran-5 50
 
 mkdir ${HOME}/Build
@@ -54,6 +59,9 @@ cd ${HOME}/Code/glot
 sudo python3 setup.py install
 
 cd ${HOME}/Code/GoSmart/glossia-comparator
+python3 setup.py install --prefix=${INSTALLDIR}
+
+cd ${HOME}/Code/GoSmart/python-daemon
 python3 setup.py install --prefix=${INSTALLDIR}
 
 
