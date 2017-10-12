@@ -1,0 +1,13 @@
+a=[0;0;0]
+b=[0;0;-10]
+uu=a-b
+u=uu/norm(uu);
+c=[-6.0555669;94.787419;-268.64013]
+d=[3.170786;91.1357;-269.8086]
+vv=d-c
+v=vv/norm(vv)
+w=dot(u,v)
+ww=cross(u,v)
+%w=w/norm(w) 
+angle=acosd(w)
+angle2=asind(ww)
