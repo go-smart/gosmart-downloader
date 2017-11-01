@@ -59,11 +59,9 @@ ListOfFunctions()
 PreInstall()
 {
 	sudo apt-get -y install cmake
-if [[ `lsb_release -rs` == "14.04" ]] then
 	sudo apt-get -y install gfortran-5
 	sudo apt-get -y install libgfortran-5-dev
 	sudo apt-get -y install gfortran-5-multilib
-fi
 	sudo apt-get -y install mpich
 	sudo apt-get -y install libblas-dev
 	sudo apt-get -y install liblapack-dev
