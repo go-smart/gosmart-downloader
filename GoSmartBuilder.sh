@@ -55,11 +55,13 @@ ListOfFunctions()
 	echo '  PYTONDAEMON SOURCEDIR'
 	echo '  All BUILDdir INSTALLDIR SOURCEDIR'
 	echo '  BuildAlone BUILDdir INSTALLDIR SOURCEDIR'
+	echo '  PYTHONRELATED BUILDdir INSTALLDIR SOURCEDIR'
 }
 PreInstall()
 {
 	sudo apt-get -y install cmake
-if [[ `lsb_release -rs` == "14.04" ]] then
+if [[ `lsb_release -rs` == "14.04" ]] 
+then
 	sudo apt-get -y install gfortran-5
 	sudo apt-get -y install libgfortran-5-dev
 	sudo apt-get -y install gfortran-5-multilib
@@ -74,8 +76,6 @@ fi
 	sudo apt-get -y install libcgal-qt5-dev
 	sudo apt-get -y install libvtk5-dev
 	sudo apt-get -y install libtinyxml2-dev
-	sudo apt-get -y install docker
-	sudo apt-get -y install docker-compose
 	sudo apt-get -y install python-setuptools
 	sudo apt-get -y install python3-setuptools
 	sudo apt-get -y install python3-pip
@@ -90,9 +90,13 @@ fi
 	sudo apt-get -y install python-yaml
 	sudo apt-get -y install python3-watchdog
 	sudo apt-get -y install libboost-filesystem1.58-dev
-	sudo apt-get -y install pip3 install autobahn 
-	sudo apt-get -y install pip3 install munkres
-	sudo apt-get -y install pip3 install hachiko
+	sudo pip3 install autobahn 
+	sudo pip3 install munkres
+	sudo pip3 install hachiko
+	sudo pip3 install docker-py
+	curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+	sudo mv ./docker-compose /usr/bin/docker-compose
+	sudo chmod +x /usr/bin/docker-compose
 	sudo add-apt-repository ppa:fenics-packages/fenics
 	sudo apt-get update
 	sudo apt-get -y install --no-install-recommendfs fenics
@@ -116,7 +120,7 @@ MakeDirectory()
 
 DockerLaunch()
 {
-	cd $1/dockerlaunch
+	cd $1/GoSmart/dockerlaunch
 	cmake -DCMAKE_INSTALL_PREFIX=$2 $3/dockerlaunch
 	make
 	sudo make install
@@ -187,6 +191,13 @@ PYTHONDAEMON()
 	sudo python3 setup.py install
 }
 
+PYTHONRELATED()
+{
+	DockerLaunch $@
+	GLOT $3
+	GLOSSIACOMPARATOR $3
+	PYTHONDAEMON $3
+}
 
 
 BuildAlone()
