@@ -60,11 +60,17 @@ ListOfFunctions()
 PreInstall()
 {
 	sudo apt-get -y install cmake
-if [[ `lsb_release -rs` == "14.04" ]] 
+if [[ `lsb_release -rs` == "16.04" ]] 
 then
 	sudo apt-get -y install gfortran-5
 	sudo apt-get -y install libgfortran-5-dev
 	sudo apt-get -y install gfortran-5-multilib
+	sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-5 50
+	sudo apt-get -y install libboost-filesystem1.58-dev
+fi
+if [[ `lsb_release -rs` == "16.04" ]] 
+then
+	sudo apt-get -y install libboost-filesystem1.54-dev
 fi
 	sudo apt-get -y install mpich
 	sudo apt-get -y install libblas-dev
@@ -89,7 +95,7 @@ fi
 	sudo apt-get -y install curl
 	sudo apt-get -y install python-yaml
 	sudo apt-get -y install python3-watchdog
-	sudo apt-get -y install libboost-filesystem1.58-dev
+
 	sudo pip3 install autobahn 
 	sudo pip3 install munkres
 	sudo pip3 install hachiko
@@ -101,7 +107,7 @@ fi
 	sudo apt-get update
 	sudo apt-get -y install --no-install-recommendfs fenics
 	sudo apt-get dist-upgrade
-	sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-5 50
+
 }
 MakeDirectory()
 {
