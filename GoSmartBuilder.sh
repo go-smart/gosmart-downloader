@@ -67,19 +67,21 @@ then
 	sudo apt-get -y install gfortran-5-multilib
 	sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-5 50
 	sudo apt-get -y install libboost-filesystem1.58-dev
+	sudo apt-get -y install libcgal-qt5-dev
 fi
-if [[ `lsb_release -rs` == "16.04" ]] 
+if [[ `lsb_release -rs` == "14.04" ]] 
 then
 	sudo apt-get -y install libboost-filesystem1.54-dev
+	sudo apt-get -y install libcgal-qt4-dev
 fi
 	sudo apt-get -y install mpich
 	sudo apt-get -y install libblas-dev
 	sudo apt-get -y install liblapack-dev
 	sudo apt-get -y install libmumps-dev
+	sudo apt-get -y install libffi-dev
 	sudo apt-get -y install build-essential
 	sudo apt-get -y install python
 	sudo apt-get -y install libcgal-dev
-	sudo apt-get -y install libcgal-qt5-dev
 	sudo apt-get -y install libvtk5-dev
 	sudo apt-get -y install libtinyxml2-dev
 	sudo apt-get -y install python-setuptools
@@ -87,25 +89,29 @@ fi
 	sudo apt-get -y install python3-pip
 	sudo apt-get -y install libprotobuf-dev
 	sudo apt-get -y install protobuf-compiler
-	sudo apt-get -y install python3-paramiko
-	sudo apt-get -y install python3-zope.interface
 	sudo apt-get -y install python-scipy
 	sudo apt-get -y install gmsh
 	sudo apt-get -y install ipython
 	sudo apt-get -y install curl
 	sudo apt-get -y install python-yaml
-	sudo apt-get -y install python3-watchdog
-
+	sudo pip3 install --upgrade --user setuptools pip
+	sudo pip3 install pynacl
 	sudo pip3 install autobahn 
 	sudo pip3 install munkres
 	sudo pip3 install hachiko
 	sudo pip3 install docker-py
+	sudo pip3 install paramiko
+	sudo pip3 install watchdog
+	
 	curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > ./docker-compose
 	sudo mv ./docker-compose /usr/bin/docker-compose
 	sudo chmod +x /usr/bin/docker-compose
+}
+FENICS()
+{
 	sudo add-apt-repository ppa:fenics-packages/fenics
 	sudo apt-get update
-	sudo apt-get -y install --no-install-recommendfs fenics
+	sudo apt-get -y install --no-install-recommends fenics
 	sudo apt-get dist-upgrade
 
 }
