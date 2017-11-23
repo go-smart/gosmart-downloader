@@ -40,5 +40,6 @@ GoSmart Simulation Server on Ubuntu (Starting the Server, Client and Crossbar)
 
 3.	Your terminal should launch a few servers after pulling all the docker containers. In case of any errors in `./GoSmartInit.sh ~/Code/GoSmart`, you should execute each commands in the file `./GoSmartInit.sh` manually
 4.	The final terminal should look as follows: 
+![alt text](https://github.com/go-smart/gosmart-downloader/blob/master/TerminalSimulation.png)
 5.	If there are any error in the above, then you should fix the error manually
 6.	Report errors in github issues
